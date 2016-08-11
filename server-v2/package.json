@@ -1,17 +1,21 @@
 {
-  "name": "server-v1",
+  "name": "server-v2",
   "version": "2.0.0",
   "description": "test app server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon --exec npm start"
+    "dev": "nodemon --exec npm start",
+    "debug": "nodemon --debug=3000 index.js"
   },
   "dependencies": {
     "node-healthcheck": "1.0.0",
     "restify": "^4.1.1",
     "uuid": "^2.0.2"
+  },
+  "devDependencies":{
+    "nodemon": "1.10.0"
   },
   "author": "",
   "license": "ISC"

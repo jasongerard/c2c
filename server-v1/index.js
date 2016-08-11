@@ -4,7 +4,7 @@ const checks = require("node-healthcheck");
 const uuid = require("uuid").v4();
 
 const server = restify.createServer();
-const message = uuid + " version " + process.env.npm_package_version;
+const message = "uuid:" + uuid + " version " + process.env.npm_package_version;
 checks.registerEndpoints(server);
 
 server.get("/", (req, res, next) =>{

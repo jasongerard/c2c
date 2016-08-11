@@ -5,16 +5,7 @@ services:
     ports:
       - 8080
     networks:
-      - front-tier
-      # - back-tier
-
-  # redis:
-  #   image: redis
-  #   links:
-  #     - web
-  #   networks:
-  #     - back-tier
-
+      - web-network
   lb:
     image: dockercloud/haproxy
     ports:
@@ -22,13 +13,10 @@ services:
     links:
       - web
     networks:
-      - front-tier
-      # - back-tier
+      - web-network
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
-  front-tier:
+  web-network:
     driver: bridge
-  # back-tier:
-  #   driver: bridge
