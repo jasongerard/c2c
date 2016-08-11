@@ -1,0 +1,15 @@
+
+
+docker run -d -p 8080:8080 myserver:1.0.0
+
+curl http://localhost:8080/; echo
+
+docker logs admiring_jepsendocker
+
+
+docker run -it -w /usr/src/app -v `pwd`:/usr/src/app -p 8080:8080 node:6.3.1 npm run dev
+
+docker run -it -w /usr/src/app -v `pwd`:/usr/src/app -p 8080:8080 -p 3000:3000 node:6.3.1 npm run debug
+
+
+while true; do curl http://localhost:8080; echo; sleep .75; done;
