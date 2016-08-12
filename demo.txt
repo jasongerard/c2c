@@ -73,6 +73,8 @@ kubectl get pods -w
 
 kubectl rolling-update my-server my-server2 --image=gcr.io/cotb-140101/demoserver/2.0.0:latest
 
+kubectl rolling-update my-server2 my-server --image=gcr.io/cotb-140101/demoserver:latest
+
 2282d2d8-15a0-4c81-9c1a-e08f557a711e
 954eda9e-8e24-419b-b6a6-7e068c9f6f68
 33fc239b-d442-4c3c-9b40-aae73e9e390b
