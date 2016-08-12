@@ -43,6 +43,8 @@ docker-compose up
 
 while true; do curl http://localhost:80; echo; sleep .75; done;
 
+104.197.123.156
+
 docker-compose scale web=3
 
 // healtchecks
@@ -62,6 +64,14 @@ gcloud container clusters get-credentials cluster-1 \
 kubectl proxy
 
 http://localhost:8001/ui
+
+// setup tmux
+
+while true; do curl http://104.197.123.156:8080; echo; sleep .75; done;
+
+kubectl get pods -w
+
+kubectl rolling-update my-server my-server2 --image=gcr.io/cotb-140101/demoserver/2.0.0:latest
 
 2282d2d8-15a0-4c81-9c1a-e08f557a711e
 954eda9e-8e24-419b-b6a6-7e068c9f6f68
