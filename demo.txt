@@ -1,20 +1,37 @@
 
-docker run -d -p 9042:9042 --name cassdemo cassandra
+docker run -d -p 9042:9042 --name cassdemo cassandra:3.7
 
 docker logs -f cassdemo
 
 cqlsh
 
+source 'demo.cql'
+
+select * from cotb.attendees;
+
+insert into cotb.attendees (id, email, first_name, last_name) values (bacff9ba-1326-428e-b9ec-3d1ddfd32757, 'jason@email.com', 'Jason', 'Gerard');
+
+select * from cotb.attendees;
+
+docker stop cassdemo
+
+docker start cassdemo && docker logs cassdemo -f
+
+--
+
 docker run -d -p 9043:9042 --name cassdemo2 cassandra:3.0
 
 docker exec -it cassdemo2 cqlsh
 
+docker build -t myserver:1.0.0 .
+
 docker run -d -p 8080:8080 myserver:1.0.0
+
+docker ps
 
 curl http://localhost:8080/; echo
 
 docker logs admiring_jepsendocker
-
 
 docker run -it -w /usr/src/app -v `pwd`:/usr/src/app -p 8080:8080 node:6.3.1 npm run dev
 
@@ -24,11 +41,28 @@ while true; do curl http://localhost:8080; echo; sleep .75; done;
 
 docker-compose up
 
+while true; do curl http://localhost:80; echo; sleep .75; done;
+
 docker-compose scale web=3
 
 // healtchecks
-docker run -d -p 8080:8080 --name health_demo serverv2:2.0
+docker build -t myserver:2.0.0 .
+
+docker run -d -p 8080:8080 --name health_demo myserver:2.0.0
 
 curl -i http://localhost:8080/debug/health; echo;
 
 curl -X POST http://localhost:8080/debug/health/down
+
+
+
+2282d2d8-15a0-4c81-9c1a-e08f557a711e
+954eda9e-8e24-419b-b6a6-7e068c9f6f68
+33fc239b-d442-4c3c-9b40-aae73e9e390b
+461d2cdb-092c-42a2-a506-6443db43400e
+269e35ac-f952-4390-96bc-062383d123da
+58f73dd4-36ca-4c7b-a2ce-02e725a5b9b3
+72d72c6e-975d-428f-9d96-bb9bee70614e
+84c71180-64c4-476e-bd88-6ff08eca2f90
+b0572f5b-1ff7-4bc7-9c2b-c2fe72d9e9cb
+336f9cd6-8540-4afc-94b7-a4040c2641ab
