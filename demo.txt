@@ -54,7 +54,14 @@ curl -i http://localhost:8080/debug/health; echo;
 
 curl -X POST http://localhost:8080/debug/health/down
 
+// kubernetes
 
+gcloud container clusters get-credentials cluster-1 \
+    --zone us-central1-b --project cotb-140101
+
+kubectl proxy
+
+http://localhost:8001/ui
 
 2282d2d8-15a0-4c81-9c1a-e08f557a711e
 954eda9e-8e24-419b-b6a6-7e068c9f6f68
