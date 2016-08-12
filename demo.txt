@@ -1,4 +1,13 @@
 
+docker run -d -p 9042:9042 --name cassdemo cassandra
+
+docker logs -f cassdemo
+
+cqlsh
+
+docker run -d -p 9043:9042 --name cassdemo2 cassandra:3.0
+
+docker exec -it cassdemo2 cqlsh
 
 docker run -d -p 8080:8080 myserver:1.0.0
 
@@ -16,3 +25,10 @@ while true; do curl http://localhost:8080; echo; sleep .75; done;
 docker-compose up
 
 docker-compose scale web=3
+
+// healtchecks
+docker run -d -p 8080:8080 --name health_demo serverv2:2.0
+
+curl -i http://localhost:8080/debug/health; echo;
+
+curl -X POST http://localhost:8080/debug/health/down

@@ -9,4 +9,7 @@ COPY . /usr/src/app
 
 EXPOSE 8080
 
+HEALTHCHECK --interval=10s  --timeout=3s  \
+  CMD curl -f http://localhost/debug/health
+
 CMD [ "npm", "start" ]
