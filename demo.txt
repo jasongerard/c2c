@@ -69,6 +69,8 @@ http://localhost:8001/ui
 
 while true; do curl http://104.197.123.156:8080; echo; sleep .75; done;
 
+kubectl scale --replicas=5 rc/my-server
+
 kubectl get pods -w
 
 kubectl rolling-update my-server my-server2 --image=gcr.io/cotb-140101/demoserver/2.0.0:latest
