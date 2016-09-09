@@ -11,4 +11,4 @@ server.get("/", (req, res, next) =>{
   res.send(200, message);
 });
 
-server.listen(8080, ()=> console.log('%s listening at %s', server.name, server.url));
+server.listen(process.env.PORT || 3000, ()=> console.log('%s listening at %s', server.name, server.url));
